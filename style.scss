@@ -1,0 +1,47 @@
+@mixin devices ($breakpoint) { //the name of the mixin is devices
+  
+    @if $breakpoint == tablet {    
+    @media only screen and (max-width: 680px) {
+      @content;
+    }
+  }
+ 
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 481px) {
+      @content;
+    }
+  }
+}
+
+$primarycolor: pink;
+
+body {
+    background-color: blue;
+    @include devices(tablet) {
+        background: lightblue;
+    }
+}
+
+
+.main-content {
+    background-color: $primarycolor;
+
+    &-title { 
+        color: rgb(255, 0, 0);
+    }
+}
+
+
+.main {
+    &_title {
+        &-red {}
+        &.-blue {}
+    }
+    &_description {}
+}
+
+.listing {
+    &_items {
+        &-bold {}
+    }
+}
